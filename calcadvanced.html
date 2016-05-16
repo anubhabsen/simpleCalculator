@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Graphic Calculator</title>
+    <link rel="stylesheet" type="text/css" href="calcadvanced.css">
+  </head>
+  <body>
+        <div id="body">
+            <div id="row1">
+                <button onclick="clearer()" class="answer">AC</button>
+                <button id="display">00000000000000000</button>
+            </div>
+            <div id="row2">
+                <button onclick="operand(7)" class="button">7</button>
+                <button onclick="operand(8)" class="button">8</button>
+                <button onclick="operand(9)" class="button">9</button>
+                <button onclick="operation('+')" class="operation">+</button>
+            </div>
+            <div id="row3">
+                <button onclick="operand(4)" class="button">4</button>
+                <button onclick="operand(5)" class="button">5</button>
+                <button onclick="operand(6)" class="button">6</button>
+                <button onclick="operation('-')" class="operation">-</button>
+            </div>
+            <div id="row4">
+                <button onclick="operand(1)" class="button">1</button>
+                <button onclick="operand(2)" class="button">2</button>
+                <button onclick="operand(3)" class="button">3</button>
+                <button onclick="operation('*')" class="operation">*</button>
+            </div>
+            <div id="row5">
+                <button onclick="operand(0)" class="button">0</button>
+                <button onclick="operand('.')" class="button">.</button>
+                <button onclick="calculate()" class="answer">=</button>
+                <button onclick="operation('/')" class="operation">/</button>
+            </div>
+        </div>
+    <script type="text/javascript">
+      console.log("Discovering the functionalities of javascript");
+      var op1, op2, op, opdone = 0;
+      function operation(theOperation){
+        document.getElementById('display').innerHTML += theOperation;
+        opdone = 0;
+      }
+      function calculate(){
+        if(eval(isNaN(eval(document.getElementById('display').innerHTML))))
+        {
+          document.getElementById('display').innerHTML = "NaN value";
+        }
+        else
+          document.getElementById('display').innerHTML = eval(document.getElementById('display').innerHTML);
+        opdone = 1;
+      }
+      function clearer(){
+        document.getElementById('display').innerHTML = 00000000000000000;
+      }
+      function operand(theButton){
+        if(parseFloat(document.getElementById('display').innerHTML) == 0 || opdone == 1)
+          document.getElementById('display').innerHTML = theButton;
+        else 
+          document.getElementById('display').innerHTML += theButton;
+        opdone = 0;
+      }
+    </script>
+  </body>
